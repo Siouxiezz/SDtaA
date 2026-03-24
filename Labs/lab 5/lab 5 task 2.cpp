@@ -13,9 +13,9 @@ struct City
 City *addCity(City *first, string name, int dist)
 {
     City *c = new City;
-    c->name = name;
-    c->distance = dist;
-    c->next = 0;
+    c -> name = name;
+    c -> distance = dist;
+    c -> next = 0;
 
     if (first == 0)
     {
