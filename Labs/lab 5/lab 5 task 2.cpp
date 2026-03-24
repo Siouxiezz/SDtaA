@@ -101,8 +101,18 @@ void deleteList(City *first)
 
 int main()
 {
-
+    first = addCity(first, "Uzhhorod", 800);
+    first = addCity(first, "Mariupol", 750);
+    first = addCity(first, "Berlin", 1200);
     
+    cout << "Cities list:\n";
+    showList(first);
 
+    cout << endl;
+    printFarthestCities(first);
+
+    deleteList(first);
+
+    getch();
     return 0;
 }
