@@ -26,16 +26,21 @@ LinkedList *addLastEl(LinkedList *first, int data) {
     LinkedList *c = new LinkedList;
     c->m = data;
     c->next = 0;
+    last->next = c;
+    last = c;
     if (first == 0) 
     {
         first = c;
         last = c;
         return first;
     }
-    
-    last->next = c;
-    last = c;
+
     return first;
+}
+
+LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
+{
+    
 }
 
 int main()
