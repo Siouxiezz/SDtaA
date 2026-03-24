@@ -15,11 +15,11 @@ Car *createCar(Car *first)
 {
     Car *c = new Car;
 
-    cout << "enter name: ";
+    cout << "Enter name of the car: ";
     cin >> c -> name;
-    cout << "enter year of create: ";
+    cout << "Enter year of creation: ";
     cin >> c -> year;
-    cout << "enter price: ";
+    cout << "Enter price: ";
     cin >> c -> price;
 
     c->next = 0;
@@ -34,7 +34,7 @@ Car *createCar(Car *first)
     last->next = c;
     last = c;
 
-    return c;
+    return first;
 }
 
 void showCar(Car const *car) 
