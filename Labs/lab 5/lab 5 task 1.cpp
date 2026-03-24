@@ -7,7 +7,7 @@ struct LinkedList
 {
     int m;
     LinkedList *next;
-} *first, *last = 0;
+} *first = 0, *last = 0;
 
 LinkedList *addFirstEl(LinkedList *first, int data)
 {
@@ -15,11 +15,12 @@ LinkedList *addFirstEl(LinkedList *first, int data)
     c -> m = data;
     c -> next = first;
     first = c;
+
     if (last == 0)
     {
         last = first;
-        return first;
     }
+    return first;
 }
 
 LinkedList *addLastEl(LinkedList *first, int data) 
@@ -27,8 +28,6 @@ LinkedList *addLastEl(LinkedList *first, int data)
     LinkedList *c = new LinkedList;
     c->m = data;
     c->next = 0;
-    last->next = c;
-    last = c;
     if (first == 0) 
     {
         first = c;
@@ -36,15 +35,24 @@ LinkedList *addLastEl(LinkedList *first, int data)
         return first;
     }
 
+    last->next = c;
+    last = c;
+
     return first;
 }
 
 LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
 {
-    LinkedList *q = new LinkedList;
-    while(q != 0 && q->m != dataAfterAdd)
+    LinkedList *q = first;
+    while(q != nullptr && q->m != dataAfterAdd)
     {
         q = q->next;
+    }
+
+    if(q == 0)
+    {
+        cout << "List is empty\n";
+        return first;
     }
 
     LinkedList *c = new LinkedList;
@@ -90,18 +98,19 @@ void showList(LinkedList *first)
 {
     LinkedList *q = first;
 
+    if (q == 0) 
+    {
+        cout << "List is empty\n";
+        return;
+    }
+
     while (q != 0) 
     {
+
         cout << q->m << " ";
         q = q->next;
     }
     cout << endl;
-
-    if (q == 0) 
-    {
-        cout << "List is empty" << endl;
-        return;
-    }
 }
 
 double countAvgNumb(LinkedList *first)
@@ -148,9 +157,43 @@ LinkedList *deleteFirstEvenNumber(LinkedList *first)
     return first;
 }
 
+void deleteList(LinkedList *first) 
+{
+    if (first == 0) 
+        return;
+
+    while (first != 0) 
+    {
+        LinkedList *temp = first;
+        first = first->next;
+        delete temp;
+    }
+}
+
 int main()
 {
+    showList(first);
+    cout << endl;
 
+    first = addFirstEl(first, 10);
+    // showList(first);
+    first = addLastEl(first, 30);
+    // showList(first);
+    first = addElAfterSmth(first, 20, 10);
+    // showList(first);
+    first = addElAfterSmth(first, 25, 10);
+    cout << "Your list\n";
+    showList(first);
+    cout << endl;
+
+    cout << "Average of this list: \n" << countAvgNumb(first) << endl;
+
+    cout << "List after deleting first numb: \n";
+    first = deleteFirstEvenNumber(first);
+    showList(first);
+    deleteList(first);
+
+    getch();
 
     return 0;
 }
