@@ -1,5 +1,5 @@
 #include <iostream>
-#include <conio.h>
+// #include <conio.h>
 
 using namespace std;
 
@@ -8,7 +8,7 @@ struct Mark
     int m;
     Mark *next;
 
-} *first, *last;
+} *first, *last = 0;
 
 int main()
 {
@@ -34,7 +34,7 @@ int main()
     c3 -> next = c2;
     c1 -> next = c3;
 
-    // Mark *q;
+    Mark *q;
     // q = first;
     // while(q!=0)
     // {
@@ -47,17 +47,18 @@ int main()
     // } 
 
     // q = first;
-    // first = first -> next;
-    // q -> next = 0;
+    // first = first->next;
+    // delete q;
 
-    // q = first;
+    q = first;
 
-    // while(q!=0)
-    // {
-    //     cout << q -> m << " ";
-    //     q = q -> next;
-    // }
+    while(q!=0)
+    {
+        cout << q -> m << " ";
+        q = q -> next;
+    }
 
-    getch();
+    cin.get();
+
     return 0;
 }
