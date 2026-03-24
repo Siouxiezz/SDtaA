@@ -62,38 +62,6 @@ LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
     return first;
 }
 
-LinkedList *deleteFirstEl(LinkedList *first) 
-{
-    LinkedList *q = first;
-    first = first->next;
-
-    if (first == 0) 
-    {
-        cout << "The list is empty";
-    }
-
-    delete q;
-    return first;
-}
-
-LinkedList *delelteLastEl(LinkedList *first) 
-{
-    if (first == 0) 
-    {
-        cout << "List is empty";
-    }
-
-    LinkedList *q = first;
-
-    while (q->next != last)
-        q = q->next;
-
-    delete last;
-    last = q;
-    last->next = 0;
-    return first;
-}
-
 void showList(LinkedList *first) 
 {
     LinkedList *q = first;
@@ -176,12 +144,10 @@ int main()
     cout << endl;
 
     first = addFirstEl(first, 10);
-    // showList(first);
     first = addLastEl(first, 30);
-    // showList(first);
     first = addElAfterSmth(first, 20, 10);
-    // showList(first);
     first = addElAfterSmth(first, 25, 10);
+
     cout << "Your list\n";
     showList(first);
     cout << endl;
