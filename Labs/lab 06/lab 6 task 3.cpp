@@ -9,18 +9,19 @@ using namespace std;
 int main()
 {
     double dobytok = 1.0;
-    int count = 0;
+    int count = 0, value;
+    srand(time(0));
 
     queue<int> q;
     queue<int> newQ;
 
     cout << "Your queue: ";
 
-    for(int i = 0; i < 5; i++) 
+    for(int i = 0; i < 10; i++) 
     {
-        q.push(rand() % 20 - 1);
-        cout << q.front() << " ";
-        q.pop();
+        value = rand() % 20 + 1;
+        q.push(value);
+        cout << value << " ";
     }
 
     while(!q.empty())
@@ -33,20 +34,24 @@ int main()
             newQ.push(x);
             dobytok *= x;
             count++;
-        }
 
-        newQ.push(100);
-        dobytok *= x;
-        count++;
+            newQ.push(100);
+            dobytok *= 100;
+            count++;
+        }
     }
 
-    cout << "Your new queue: ";
+    cout << "\n=========================================";
 
-    for(int i = 0; i < 5; i++)
+    cout << "\nYour new queue: ";
+
+    while(!newQ.empty())
     {
         cout << newQ.front() << " ";
         newQ.pop();
     }
+
+    cout << "\n=========================================";
 
     cout << "\nGeometric mean: " << pow(dobytok, 1.0/count) << endl;
 
