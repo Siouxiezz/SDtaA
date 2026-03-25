@@ -28,7 +28,7 @@ City *addCity(City *first, string name, int dist)
     last = c;
 
     return first;
-}
+} 
 
 void showList(City *first) 
 {
