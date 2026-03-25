@@ -28,6 +28,7 @@ LinkedList *addLastEl(LinkedList *first, int data)
     LinkedList *c = new LinkedList;
     c->m = data;
     c->next = 0;
+
     if (first == 0) 
     {
         first = c;
@@ -44,6 +45,7 @@ LinkedList *addLastEl(LinkedList *first, int data)
 LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
 {
     LinkedList *q = first;
+
     while(q != 0 && q->m != dataAfterAdd)
     {
         q = q->next;
@@ -59,6 +61,7 @@ LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
     c->m = data;
     c->next = q->next;
     q->next = c;
+
     return first;
 }
 
@@ -122,13 +125,16 @@ LinkedList *deleteFirstEvenNumber(LinkedList *first)
     LinkedList *temp = q->next;
     q->next = temp->next;
     delete temp;
+
     return first;
 }
 
 void deleteList(LinkedList *first) 
 {
-    if (first == 0) 
+    if (first == 0)
+    {
         return;
+    }
 
     while (first != 0) 
     {

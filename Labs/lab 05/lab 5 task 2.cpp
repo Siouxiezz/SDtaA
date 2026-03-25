@@ -79,18 +79,24 @@ void printFarthestCities(City *first)
     cout << "Farthest cities:\n";
 
     if (max1 != 0)
+    {
         cout << max1->name << " " << max1->distance << "km\n";
+    }
 
     if (max2 != 0)
+    {
         cout << max2->name << " " << max2->distance << "km\n";
+    }
         
 }
 
 void deleteList(City *first) 
 {
-    if (first == 0) 
+    if (first == 0)
+    {
         return;
-
+    }
+    
     while (first != 0) 
     {
         City *temp = first;

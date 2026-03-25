@@ -94,8 +94,10 @@ void printCars(Car *first)
 void deleteCars(Car *first)
 {
     if (first == 0)
+    {
         return;
-
+    }
+    
     while (first != 0)
     {
         Car *temp = first;
