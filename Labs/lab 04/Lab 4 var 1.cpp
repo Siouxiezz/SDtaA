@@ -25,7 +25,8 @@ float average(Student S)
 
 void display(Student arr[], int n)
 {
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < n; i++)
+    {
     cout << arr[i].Name << " " 
          << arr[i].Group << " " 
          << average(arr[i]) << endl;
@@ -55,7 +56,8 @@ bool isVowel(char c)
 {
     string vowels("AEIOUYaeiouy");
 
-    for(char v : vowels){
+    for(char v : vowels)
+    {
         if(v == c) 
         {
         return true;

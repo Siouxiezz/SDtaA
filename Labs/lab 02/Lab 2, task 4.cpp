@@ -17,14 +17,17 @@ int main() {
 
 
     for (int i = 0; i < n; i++)
+    {
         for (int j = 0; j < n; j++)
         {
             a[i][j] = rand()%21-5;
         }
 
     cout << "Your array: " << endl;
+    }
 
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++)
+    {
     for (int j = 0; j < n; j++)
         {
             cout << a[i][j] << " ";
@@ -33,12 +36,16 @@ int main() {
     }
 
     for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++)
-        if (i != j && a[i][j] > max) 
+    {
+        for (int j = 0; j < n; j++)
         {
-            max = a[i][j];
-                maxRow = i;
+            if (i != j && a[i][j] > max) 
+            {
+                max = a[i][j];
+                    maxRow = i;
+            }
         }
+    }
 
     cout << "Result:\n";
 
@@ -46,9 +53,10 @@ int main() {
         if (i == maxRow) continue;
 
         for (int j = 0; j < n; j++)
+        {
             if (i != j)
                 cout << a[i][j] << " ";
-
+        }
         cout << endl;
     }
 

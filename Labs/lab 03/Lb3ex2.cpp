@@ -13,7 +13,7 @@ enum Faculty {
 };
 
 struct Student {
-	string surname;
+	string name;
 	int course;
 	double avgMark;
 	Faculty faculty;
@@ -30,7 +30,7 @@ int main()
 		cout << "\tStudent number " << i + 1 << endl;
 
 		cout << "Enter name of a student: " << endl;
-		cin >> s[i].surname;
+		cin >> s[i].name;
 
 		cout << "Enter a course: " << endl;
 		cin >> s[i].course;
@@ -57,7 +57,7 @@ int main()
 		{
 			if (s[i].faculty == searchStudent)
 			{
-				cout << s[i].surname << endl;
+				cout << s[i].name << endl;
 			}
 		}
 

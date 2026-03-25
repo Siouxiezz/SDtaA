@@ -42,8 +42,11 @@ int main()
 
     cout << "\nNew array: ";
     for(i = 0; i < n; i++)
+    {
         cout << a[i] << " ";
+    }
 
     getch();
+    
     return 0;
 }
