@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <cstdlib>
+#include <conio.h>
 
 using namespace std;
 
@@ -62,7 +63,7 @@ int main()
 			cout << "Enter card number: ";
 			cin >> p[i].data.card.cardNumber;
 
-			cout << "Enter price: ";
+			cout << "Enter how much money there are on the card: ";
 			cin >> p[i].data.card.price;
 			cardCount++;
 		}
@@ -72,7 +73,7 @@ int main()
 			cout << "Enter account number: ";
 			cin >> p[i].data.transfer.accountNumber;
 
-			cout << "Enter price: ";
+			cout << "Enter how much money you have: ";
 			cin >> p[i].data.transfer.price;
 			transferCount++;
 		}
@@ -93,20 +94,22 @@ int main()
 		{
 			cout << "Type: Card" << endl;
 			cout << "Card number: " << p[i].data.card.cardNumber << endl;
-			cout << "Price: " << p[i].data.card.price << endl;
+			cout << "Ammount of money: " << p[i].data.card.price << endl;
 		}
 
 		else if (p[i].type == bankTransfer)
 		{
 			cout << "Type: Bank Transfer" << endl;
 			cout << "Account number: " << p[i].data.transfer.accountNumber << endl;
-			cout << "Price: " << p[i].data.transfer.price << endl;
+			cout << "Ammount of money: " << p[i].data.transfer.price << endl;
 		}
 	}
 	cout << "\t Payment statistics \t" << endl;
 	cout << "Cash payments: " << cashCount << endl;
 	cout << "Card payments: " << cardCount << endl;
 	cout << "Bank transfers: " << transferCount << endl;
+
+	getch();
 
 	return 0;
 }
