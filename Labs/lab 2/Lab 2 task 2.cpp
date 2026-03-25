@@ -9,6 +9,7 @@ int main()
 
     int n, i, a[20], X;
     int countDel = 0;
+    srand(time(NULL));
 
     cout << "Enter n: ";
     cin >> n;
@@ -39,7 +40,7 @@ int main()
         }
     }
 
-    cout << "\n\nNew array: ";
+    cout << "\nNew array: ";
     for(i = 0; i < n; i++)
         cout << a[i] << " ";
 

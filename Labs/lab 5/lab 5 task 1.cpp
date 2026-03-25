@@ -44,7 +44,7 @@ LinkedList *addLastEl(LinkedList *first, int data)
 LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
 {
     LinkedList *q = first;
-    while(q != nullptr && q->m != dataAfterAdd)
+    while(q != 0 && q->m != dataAfterAdd)
     {
         q = q->next;
     }

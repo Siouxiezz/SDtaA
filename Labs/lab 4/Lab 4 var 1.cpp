@@ -26,7 +26,9 @@ float average(Student S)
 void display(Student arr[], int n)
 {
     for(int i = 0; i < n; i++){
-    cout << arr[i].Name << " " << arr[i].Group << " " << average(arr[i]) << endl;
+    cout << arr[i].Name << " " 
+         << arr[i].Group << " " 
+         << average(arr[i]) << endl;
     }
 }
 

@@ -11,6 +11,7 @@ enum Faculty {
 	law,
 	management
 };
+
 struct Student {
 	string surname;
 	int course;
@@ -28,7 +29,7 @@ int main()
 	{
 		cout << "\tStudent number " << i + 1 << endl;
 
-		cout << "Enter a surname: " << endl;
+		cout << "Enter name of a student: " << endl;
 		cin >> s[i].surname;
 
 		cout << "Enter a course: " << endl;
@@ -41,6 +42,7 @@ int main()
 		cin >> facult;
 		s[i].faculty = (Faculty)facult;
 	}
+	
 	cout << "Enter faculty to display students (0-IT,1-Economy,2-Law,3-Management): ";
 		cin >> searchStudent;
 
