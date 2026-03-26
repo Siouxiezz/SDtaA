@@ -25,7 +25,9 @@ int main() {
     int* arr = new int[n];
 
     for (int i = 0; i < n; i++)
+    {
         cin >> arr[i];
+    }
 
     int* even = new int[n];
     int* odd = new int[n];
