@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 #include <string>
 #include <conio.h>
 
@@ -12,37 +11,106 @@ struct Team
 
 };
 
+struct Queue
+{
+    Team data;
+    Queue* next;
+};
+
+void push(Queue*& first, Queue*& last, Team dat)
+{
+    Queue* s = new Queue;
+    s -> data = dat;
+    s -> next = 0;
+    
+    if(!first)
+    {
+        first = last = s;
+    }
+    else
+    {
+        last->next = s;
+        last = s;
+    }
+}
+
+Team pop(Queue*& first, Queue*& last)
+{
+    Team empty;
+
+    if(!first)
+    {
+        return empty;
+    }
+
+    Queue* s = first;
+    Team value = s -> data;
+
+    first = first -> next;
+
+    if(!first)
+    {
+        last = 0;
+    }
+
+    delete s;
+    return value;
+}
+
+Team front(Queue* first)
+{
+    if(!first)
+    {
+        Team empty;
+        return empty;
+    }
+
+    return first -> data;
+}
+
+bool isEmpty(Queue* first)
+{
+    return first == 0;
+}
+
 int main()
 {
-    queue<Team> bazoka;
+    Queue* qFirst = 0, *qLast = 0;
 
-    bazoka.push({"Prometey", "Dnipro", 30});
-    bazoka.push({"Locomotive", "Kharkiv", 15});
-    bazoka.push({"Barkom-Kazhany", "Lviv", 17});
+    push(qFirst, qLast, {"Prometey", "Dnipro", 30});
+    push(qFirst, qLast, {"Locomotive", "Kharkiv", 15});
+    push(qFirst, qLast, {"Barkom-Kazhany", "Lviv", 17});
 
-    queue<Team> copy = bazoka;
-    Team best {"", "", -1}, worst {"", "", 100};
-    queue<Team> uniqueCities;
+    Team best {"", "", -1};
+    Team worst {"", "", 100};
 
     cout << "\tAll teams\n";
 
-    while(!copy.empty())
+    while(!isEmpty(qFirst))
     {
-        Team t = copy.front();
+        Team t = front(qFirst);
 
         cout << "Command: " << t.name 
              << " | City: " << t.city 
              << " | Points: " << t.points << endl;
         cout << "=====================================================\n";
-        
-        copy.pop();
 
-        if (t.points > best.points) best = t;
-        if (t.points < worst.points) worst = t;
+        if (t.points > best.points) 
+        {
+            best = t;
+        }
+        if (t.points < worst.points) 
+        {
+            worst = t;
+        }
+
+         pop(qFirst, qLast);
     }
 
-    cout << "Best team: " << best.name << " (" << best.points << ")" << endl;
-    cout << "Worst team: " << worst.name << " (" << worst.points << ")" << endl;
+    cout << "\nBest team: " << best.name 
+         << " (" << best.points << ")" << endl;
+    cout << "Worst team: " << worst.name 
+         << " (" << worst.points << ")" << endl;
 
     getch();
  

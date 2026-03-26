@@ -1,10 +1,68 @@
 #include <iostream>
-#include <queue>
 #include <cmath>
 #include <ctime>
 #include <conio.h>
 
 using namespace std;
+
+struct Queue
+{
+    double data;
+    Queue* next;
+};
+
+void push(Queue*& first, Queue*& last, double dat)
+{
+    Queue* s = new Queue;
+    s -> data = dat;
+    s -> next = 0;
+    
+    if(!first)
+    {
+        first = last = s;
+    }
+    else
+    {
+        last->next = s;
+        last = s;
+    }
+}
+
+double pop(Queue*& first, Queue*& last)
+{
+    if(!first)
+    {
+        return 0;
+    }
+
+    Queue* s = first;
+    double value = s -> data;
+
+    first = first -> next;
+
+    if(!first)
+    {
+        last = 0;
+    }
+
+    delete s;
+    return value;
+}
+
+double front(Queue* first)
+{
+    if(!first)
+    {
+        return 0;
+    }
+
+    return first -> data;
+}
+
+bool isEmpty(Queue* first)
+{
+    return first == 0;
+}
 
 int main()
 {
@@ -12,52 +70,52 @@ int main()
     int count = 0, value;
     srand(time(0));
 
-    queue<int> q;
-    queue<int> newQ;
+    Queue *qFirst = NULL, *qLast = NULL;
+    Queue *newFirst = NULL, *newLast = NULL;
 
-    cout << "Your queue: ";
+    cout << "\tYour queue\n";
 
     for(int i = 0; i < 10; i++) 
     {
         value = rand() % 20 + 1;
-        q.push(value);
+        push(qFirst, qLast, value);
         cout << value << " ";
     }
 
-    while(!q.empty())
+    while(!isEmpty(qFirst))
     {
-        int x = q.front();
-        q.pop();
+        int x = front(qFirst);
+        pop(qFirst,qLast);
 
         if(x % 2 == 0)
         {
-            newQ.push(x);
+            push(newFirst, newLast, x);
             dobytok *= x;
             count++;
 
-            newQ.push(100);
+            push(newFirst, newLast, 100);
             dobytok *= 100;
             count++;
         }
     }
 
-    cout << "\n=========================================";
+    cout << "\n===================================";
 
-    cout << "\nYour new queue: ";
+    cout << "\n\tYour new queue\n";
 
-    while(!newQ.empty())
+    while(!isEmpty(newFirst))
     {
-        cout << newQ.front() << " ";
-        newQ.pop();
+        cout << front(newFirst) << " ";
+        pop(newFirst, newLast);
     }
 
-    cout << "\n=========================================";
+    cout << "\n===================================";
 
     cout << "\nGeometric mean: " << pow(dobytok, 1.0/count) << endl;
 
-    while(!q.empty())
+    while(!isEmpty(qFirst))
     {
-        q.pop();
+        pop(qFirst, qLast);
     }
 
     getch();
