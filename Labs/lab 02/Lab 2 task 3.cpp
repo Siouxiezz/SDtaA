@@ -19,10 +19,9 @@ int main() {
         }
     }
 
-    int max = a[0][0], maxI = 0, maxJ = 0;
+    int max = a[0][0], maxRow = 0, maxCol = 0;
 
-    cout << "Your array: ";
-    cout << endl;
+    cout << "Your array: \n";
     
     for (int i = 0; i < n; i++)
     {
@@ -39,41 +38,44 @@ int main() {
         {
             if (a[i][j] > max) {
                 max = a[i][j];
-                maxI = i;
-                maxJ = j;
+                maxRow = i;
+                maxCol = j;
             }
         }
     }
 
     for (int j = 0; j < n; j++)
     {
-        swap(a[0][j], a[maxI][j]);
+        swap(a[0][j], a[maxRow][j]);
     }
 
-    cout << "\n Array after swapping rows:\n";
+    cout << "==========================\n";
+
+    cout << "Array after swapping rows:\n";
     for (int i = 0; i < n; i++)
     {
         for(int j = 0; j < n; j++)
         {
             cout << a[i][j] << " ";
-            cout << endl;
         }
+        cout << endl;
     }
 
-
-    cout << "\nArray after swapping columns:\n";
     for (int i = 0; i < n; i++)
     {
-        swap(a[i][0], a[i][maxJ]);
+        swap(a[i][0], a[i][maxCol]);
     }
 
+    cout << "==============================\n";
+
+    cout << "Array after swapping columns: \n";
     for (int i = 0; i < n; i++) 
     {
         for (int j = 0; j < n; j++)
         {
             cout << a[i][j] << " ";
-            cout << endl;
         }
+        cout << endl;
     }
 
     getch();
