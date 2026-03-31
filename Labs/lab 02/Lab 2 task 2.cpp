@@ -9,7 +9,7 @@ int main()
 
     int n, i, a[20], X;
     int countDel = 0;
-    srand(time(NULL));
+    srand(time(nullptr));
 
     cout << "Enter n: ";
     cin >> n;
