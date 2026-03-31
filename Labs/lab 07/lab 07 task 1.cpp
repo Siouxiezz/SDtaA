@@ -7,9 +7,9 @@ struct Temperature
 {
     int m;
     Temperature *next;
-}*first, *last, *first2, *last2;
+}*first = 0, *last = 0, *first2 = 0, *last2 = 0;
 
-Temperature* addTemp(Temperature *next, Temperature *&last, int value)
+Temperature* addTemp(Temperature *first, Temperature *&last, int value)
 {
     Temperature *q = new Temperature;
     q -> m = value;
@@ -118,6 +118,8 @@ int main()
 
     cout << "Your list 2: \n";
     showList(first2);
+
+    cout << "\n=================================\n";
 
     first = mergeLists(first, last, first2);
 
