@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int* searchForEvenNumb(int arr[], int n, bool isEven, int &newSize)
+void searchNewSize(int arr[], int n, bool isEven, int &newSize)
 {
 
     newSize = 0;
@@ -20,6 +20,10 @@ int* searchForEvenNumb(int arr[], int n, bool isEven, int &newSize)
             newSize ++;
         }
     }
+}
+
+int* searchForEvenNumb(int arr[], int n, int &newSize, bool isEven)
+{
 
     int* result = new int[newSize];
     int index = 0;
@@ -39,13 +43,13 @@ int* searchForEvenNumb(int arr[], int n, bool isEven, int &newSize)
     }
 
     return result;
-
 }
 
-void bubbleSort(int arr[], int n, bool ascending) {
-    for (int i = 0; i < n - 1; i++)
+void bubbleSort(int arr[], int &newSize, bool ascending) 
+{   
+    for (int i = 0; i < newSize - 1; i++)
     {
-        for (int j = 0; j < n - i - 1; j++)
+        for (int j = 0; j < newSize - i - 1; j++)
         {
             if ((ascending && arr[j] > arr[j+1]) || (!ascending && arr[j] < arr[j+1]))
             {
@@ -72,11 +76,13 @@ int main() {
 
     int eSize, oSize;
 
-    int* even; 
-    searchForEvenNumb(arr, n, true, eSize);
+    int* even ; 
+    searchNewSize(arr, n, true, eSize);
+    even = searchForEvenNumb(arr, n, eSize, true);
     
     int* odd; 
-    searchForEvenNumb(arr, n, false, oSize);
+    searchNewSize(arr, n, false, oSize);
+    odd = searchForEvenNumb(arr, n, oSize, false);
 
     bubbleSort(even, eSize, true);
     bubbleSort(odd, oSize, false);
@@ -90,10 +96,20 @@ int main() {
         arr[eSize+i] = odd[i];
     }
 
-    cout << "\nResult: ";
-    for (int i = 0; i < n; i++)
+    cout << "\n=======================";
+
+    cout << "\nResult even: \n";
+    for (int i = 0; i < eSize; i++)
     {
-        cout << arr[i] << " ";
+        cout << even[i] << " ";
+    }
+
+    cout << "\n=======================";
+
+    cout << "\nResult odd: \n";
+    for (int i = 0; i < oSize; i++)
+    {
+        cout << odd[i] << " ";
     }
 
     getch(); 
