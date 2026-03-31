@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <cstdlib>
+#include <conio.h>
 
 using namespace std;
 
@@ -41,9 +42,12 @@ int main()
 {
 	Payment p[5];
 	int i, cashCount = 0, cardCount = 0, transferCount = 0, payType;
+
 	for (i = 0; i < 5; i++)
 	{ 
-		cout << "\tPayment number: " << i + 1 << endl;
+
+		p[i].number = i + 1;
+		cout << "\tPayment number: " << p[i].number << endl;
 
 		cout << "Choose payment type (0-cash, 1-card, 2-bank transfer): ";
 		cin >> payType;
@@ -62,7 +66,7 @@ int main()
 			cout << "Enter card number: ";
 			cin >> p[i].data.card.cardNumber;
 
-			cout << "Enter price: ";
+			cout << "Enter how much money there are on the card: ";
 			cin >> p[i].data.card.price;
 			cardCount++;
 		}
@@ -72,11 +76,12 @@ int main()
 			cout << "Enter account number: ";
 			cin >> p[i].data.transfer.accountNumber;
 
-			cout << "Enter price: ";
+			cout << "Enter how much money you have: ";
 			cin >> p[i].data.transfer.price;
 			transferCount++;
 		}
 	}
+
 	cout << "\t Payment information \t" << endl;
 
 	for (i = 0; i < 5; i++)
@@ -87,26 +92,30 @@ int main()
 		{
 			cout << "Type: Cash" << endl;
 			cout << "Amount: " << p[i].data.cashAmount << endl;
+			cout << endl;
 		}
-
 		else if (p[i].type == card)
 		{
 			cout << "Type: Card" << endl;
 			cout << "Card number: " << p[i].data.card.cardNumber << endl;
-			cout << "Price: " << p[i].data.card.price << endl;
+			cout << "Ammount of money: " << p[i].data.card.price << endl;
+			cout << endl;
 		}
-
 		else if (p[i].type == bankTransfer)
 		{
 			cout << "Type: Bank Transfer" << endl;
 			cout << "Account number: " << p[i].data.transfer.accountNumber << endl;
-			cout << "Price: " << p[i].data.transfer.price << endl;
+			cout << "Ammount of money: " << p[i].data.transfer.price << endl;
+			cout << endl;
 		}
 	}
-	cout << "\t Payment statistics \t" << endl;
+	
+	cout << "Payment statistics\n";
 	cout << "Cash payments: " << cashCount << endl;
 	cout << "Card payments: " << cardCount << endl;
 	cout << "Bank transfers: " << transferCount << endl;
+
+	getch();
 
 	return 0;
 }

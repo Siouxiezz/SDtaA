@@ -211,7 +211,7 @@ void measureComplexity(int testSizes[], int numTests)
 				b[i][j] = a[k];
 				k++;
 			}
-		}
+		}   
 
 		
 		for (int i = 0; i < rows; i++)

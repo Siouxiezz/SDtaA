@@ -11,8 +11,9 @@ enum Faculty {
 	law,
 	management
 };
+
 struct Student {
-	string surname;
+	string name;
 	int course;
 	double avgMark;
 	Faculty faculty;
@@ -26,38 +27,41 @@ int main()
 
 	for (i = 0; i < 5; i++)
 	{
-		cout << "\tStudent number " << i + 1 << endl;
+		cout << "Student number " << i + 1 << endl;
 
-		cout << "Enter a surname: " << endl;
-		cin >> s[i].surname;
+		cout << "Enter name of a student: ";
+		cin >> s[i].name;
 
-		cout << "Enter a course: " << endl;
+		cout << "Enter a course: ";
 		cin >> s[i].course;
 
-		cout << "Enter average mark: " << endl;
+		cout << "Enter average mark: ";
 		cin >> s[i].avgMark;
 
 		cout << "Choose faculty (0-IT, 1-Economy, 2-Law, 3-Management): ";
 		cin >> facult;
 		s[i].faculty = (Faculty)facult;
 	}
+	
 	cout << "Enter faculty to display students (0-IT,1-Economy,2-Law,3-Management): ";
 		cin >> searchStudent;
+
+		for (i = 0; i < 5; i++)
+		{
+			if (s[i].faculty == searchStudent)
+			{
+				cout << s[i].name << endl;
+			}
+		}
 
 		for (i = 0; i < 5; i++)
 		{
 			sum += s[i].avgMark;
 		}
 
-		cout << "Average mark of group: " << sum / 5 << endl;
+		cout << "Average mark of group: " << sum / 5.0 << endl;
 
-		for (i = 0; i < 5; i++)
-		{
-			if (s[i].faculty == searchStudent)
-			{
-				cout << s[i].surname << endl;
-			}
-		}
+		
 
 		getch();
 
