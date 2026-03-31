@@ -1,14 +1,53 @@
 #include <iostream>
+#include <ctime>
 #include <conio.h>
 
 using namespace std;
+
+int* searchForEvenNumb(int arr[], int n, bool isEven, int &newSize)
+{
+
+    newSize = 0;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(isEven && arr[i] % 2 == 0)
+        {
+            newSize++;
+        }
+        if(!isEven && arr[i] % 2 != 0)
+        {
+            newSize ++;
+        }
+    }
+
+    int* result = new int[newSize];
+    int index = 0;
+
+    for(int i = 0; i < n; i++)
+    {
+        if(isEven && arr[i] % 2 == 0)
+        {
+            result[index] = arr[i];
+            index++;
+        }
+        if(!isEven && arr[i] % 2 != 0)
+        {
+            result[index] = arr[i];
+            index++;
+        }
+    }
+
+    return result;
+
+}
 
 void bubbleSort(int arr[], int n, bool ascending) {
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = 0; j < n - i - 1; j++)
         {
-            if ((ascending && arr[j] > arr[j+1]))
+            if ((ascending && arr[j] > arr[j+1]) || (!ascending && arr[j] < arr[j+1]))
             {
                 swap(arr[j], arr[j+1]);
             }
@@ -17,51 +56,51 @@ void bubbleSort(int arr[], int n, bool ascending) {
 }
 
 int main() {
+    srand(time(NULL));
     int n;
     cout << "Enter n: ";
-    
+
     cin >> n;
 
     int* arr = new int[n];
 
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        arr[i] = rand()% 21 - 5;
+        cout << arr[i] << " ";
     }
 
-    int* even = new int[n];
-    int* odd = new int[n];
-    int e = 0, o = 0;
+    int eSize, oSize;
 
-    for (int i = 0; i < n; i++) 
-    {
-        if (arr[i] % 2 == 0)
-        {
-            even[e++] = arr[i];
-        }else
-        {
-            odd[o++] = arr[i];
-        }
-    }
+    int* even; 
+    searchForEvenNumb(arr, n, true, eSize);
+    
+    int* odd; 
+    searchForEvenNumb(arr, n, false, oSize);
 
-    bubbleSort(even, e, true);
-    bubbleSort(odd, o, false);
+    bubbleSort(even, eSize, true);
+    bubbleSort(odd, oSize, false);
 
-    for (int i = 0; i < e; i++)
+    for (int i = 0; i < eSize; i++)
     {
         arr[i] = even[i];
     }
-    for (int i = 0; i < o; i++)
+    for (int i = 0; i < oSize; i++)
     {
-        arr[e+i] = odd[i];
+        arr[eSize+i] = odd[i];
     }
 
+    cout << "\nResult: ";
     for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
-    
+
     getch(); 
+    
+    delete[] arr;
+    delete[] even;
+    delete[] odd;
 
     return 0;
 }
