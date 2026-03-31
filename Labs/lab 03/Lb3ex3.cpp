@@ -45,7 +45,9 @@ int main()
 
 	for (i = 0; i < 5; i++)
 	{ 
-		cout << "\tPayment number: " << i + 1 << endl;
+
+		p[i].number = i + 1;
+		cout << "\tPayment number: " << p[i].number << endl;
 
 		cout << "Choose payment type (0-cash, 1-card, 2-bank transfer): ";
 		cin >> payType;
@@ -90,22 +92,25 @@ int main()
 		{
 			cout << "Type: Cash" << endl;
 			cout << "Amount: " << p[i].data.cashAmount << endl;
+			cout << endl;
 		}
 		else if (p[i].type == card)
 		{
 			cout << "Type: Card" << endl;
 			cout << "Card number: " << p[i].data.card.cardNumber << endl;
 			cout << "Ammount of money: " << p[i].data.card.price << endl;
+			cout << endl;
 		}
 		else if (p[i].type == bankTransfer)
 		{
 			cout << "Type: Bank Transfer" << endl;
 			cout << "Account number: " << p[i].data.transfer.accountNumber << endl;
 			cout << "Ammount of money: " << p[i].data.transfer.price << endl;
+			cout << endl;
 		}
 	}
 	
-	cout << "\t Payment statistics \t" << endl;
+	cout << "Payment statistics\n";
 	cout << "Cash payments: " << cashCount << endl;
 	cout << "Card payments: " << cardCount << endl;
 	cout << "Bank transfers: " << transferCount << endl;
