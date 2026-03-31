@@ -22,7 +22,7 @@ Car *createCar(Car *first)
     cout << "Enter price: ";
     cin >> c -> price;
 
-    c->next = 0;
+    c -> next = 0;
 
     if (first == 0)
     {
@@ -31,7 +31,7 @@ Car *createCar(Car *first)
         return first;
     }
 
-    last->next = c;
+    last -> next = c;
     last = c;
 
     return first;
@@ -83,11 +83,11 @@ void printCars(Car *first)
     {
         if ((currentYear - q -> year > 10) && q -> price < 5000)
         {
-            cout << q->name << " "
-                 << q->year << " "
-                 << q->price << endl;
+            cout << q -> name << " "
+                 << q -> year << " "
+                 << q -> price << endl;
         }
-        q = q->next;
+        q = q -> next;
     }
 }
 
@@ -101,7 +101,7 @@ void deleteCars(Car *first)
     while (first != 0)
     {
         Car *temp = first;
-        first = first->next;
+        first = first -> next;
         delete temp;
     }
 }
