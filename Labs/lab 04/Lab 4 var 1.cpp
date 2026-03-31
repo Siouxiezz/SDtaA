@@ -15,9 +15,9 @@ float average(Student S)
 {
     float sum = 0;
     for(int i = 0;i < 5; i++)
-        {
-            sum += S.SES[i];
-        }
+    {
+        sum += S.SES[i];
+    }
 
     return sum / 5.0;
 
@@ -27,9 +27,9 @@ void display(Student arr[], int n)
 {
     for(int i = 0; i < n; i++)
     {
-    cout << arr[i].Name << " " 
-         << arr[i].Group << " " 
-         << average(arr[i]) << endl;
+        cout << arr[i].Name << " " 
+            << arr[i].Group << " " 
+            << average(arr[i]) << endl;
     }
 }
 
@@ -100,12 +100,13 @@ int main()
 
     Student arr[100];
 
-    cin.ignore();
+    // cin.ignore();
 
     for(int i = 0; i < n; i++)
     {
         cout << "\tStudent " << i+1;
 
+        cin.ignore();
         cout << "\nEnter name of this student: ";
         getline(cin, arr[i].Name);
 
@@ -120,7 +121,7 @@ int main()
         cin.ignore();
     }
 
-    cout << "\tStudents: \t\n";
+    cout << "\tStudents: \n";
     display(arr, n);
 
     cout << endl;

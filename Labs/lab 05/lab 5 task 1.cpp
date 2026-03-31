@@ -26,8 +26,8 @@ LinkedList *addFirstEl(LinkedList *first, int data)
 LinkedList *addLastEl(LinkedList *first, int data) 
 {
     LinkedList *c = new LinkedList;
-    c->m = data;
-    c->next = 0;
+    c-> m = data;
+    c-> next = 0;
 
     if (first == 0) 
     {
@@ -36,7 +36,7 @@ LinkedList *addLastEl(LinkedList *first, int data)
         return first;
     }
 
-    last->next = c;
+    last -> next = c;
     last = c;
 
     return first;
@@ -46,9 +46,9 @@ LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
 {
     LinkedList *q = first;
 
-    while(q != 0 && q->m != dataAfterAdd)
+    while(q != 0 && q -> m != dataAfterAdd)
     {
-        q = q->next;
+        q = q -> next;
     }
 
     if(q == 0)
@@ -58,9 +58,9 @@ LinkedList *addElAfterSmth(LinkedList *first, int data, int dataAfterAdd)
     }
 
     LinkedList *c = new LinkedList;
-    c->m = data;
-    c->next = q->next;
-    q->next = c;
+    c -> m = data;
+    c -> next = q -> next;
+    q -> next = c;
 
     return first;
 }
@@ -78,8 +78,8 @@ void showList(LinkedList *first)
     while (q != 0) 
     {
 
-        cout << q->m << " ";
-        q = q->next;
+        cout << q -> m << " ";
+        q = q -> next;
     }
     cout << endl;
 }
@@ -92,8 +92,8 @@ double countAvgNumb(LinkedList *first)
 
     while (q != 0)
     {
-        sum += q->m;
-        q = q->next;
+        sum += q -> m;
+        q = q -> next;
         count++;
     }
 
@@ -104,26 +104,26 @@ LinkedList *deleteFirstEvenNumber(LinkedList *first)
 {
     LinkedList *q = first;
 
-    if (q->m % 2 == 0) 
+    if (q -> m % 2 == 0) 
     {
-        LinkedList *temp = q->next;
+        LinkedList *temp = q -> next;
         delete q;
         return temp;
     }
 
-    while (q->next != 0 && q->next->m % 2 != 0) 
+    while (q -> next != 0 && q -> next -> m % 2 != 0) 
     {
-        q = q->next;
+        q = q -> next;
     }
 
-    if (q->next == 0) 
+    if (q -> next == 0) 
     {
         cout << "Even number is not finded" << endl;
         return first;
     }
 
-    LinkedList *temp = q->next;
-    q->next = temp->next;
+    LinkedList *temp = q -> next;
+    q -> next = temp -> next;
     delete temp;
 
     return first;
@@ -158,7 +158,7 @@ int main()
     showList(first);
     cout << endl;
 
-    cout << "Average of this list: \n" << countAvgNumb(first) << endl;
+    cout << "Average of this list: " << countAvgNumb(first) << endl;
 
     cout << "List after deleting first numb: \n";
     first = deleteFirstEvenNumber(first);
