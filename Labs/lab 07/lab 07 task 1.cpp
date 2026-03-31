@@ -7,6 +7,7 @@ struct Temperature
 {
     int m;
     Temperature *next;
+    Temperature *prev;
 }*first = 0, *last = 0, *first2 = 0, *last2 = 0;
 
 Temperature* addTemp(Temperature *first, Temperature *&last, int value)
@@ -14,6 +15,7 @@ Temperature* addTemp(Temperature *first, Temperature *&last, int value)
     Temperature *q = new Temperature;
     q -> m = value;
     q -> next = 0; 
+    q -> prev = last;
 
     if (first == 0)
     {
@@ -36,6 +38,7 @@ Temperature* mergeLists(Temperature *first, Temperature *last, Temperature *firs
     }
 
     last -> next = first2;
+    first2 -> prev = last;
 
     return first;
 }
