@@ -12,7 +12,7 @@ struct Book
     Book *prev;
 }*first = 0, *last = 0, *first2 = 0, *last2 = 0;
 
-Book* addTemp(Book *first, Book *&last, string nm, string a, int y)
+Book* addBook(Book *first, Book *&last, string nm, string a, int y)
 {
     Book *q = new Book;
     q -> name = nm;
@@ -119,14 +119,14 @@ void deleteList(Book *first)
 
 int main()
 {
-    first= addTemp(first, last, "Kobzar", "Taras Shevchenko", 1860);
-    first = addTemp(first, last, "Ababdb", "Michael Jackson", 2004);
-    first = addTemp(first, last, "ASJJSkk", "Me", 2026);
+    first= addBook(first, last, "Kobzar", "Taras Shevchenko", 1860);
+    first = addBook(first, last, "Ababdb", "Michael Jackson", 2004);
+    first = addBook(first, last, "ASJJSkk", "Me", 2026);
 
-    first2 = addTemp(first2, last2, "ASsss", "IVan", 2022);
-    first2 = addTemp(first2, last2, "Garry Potter", "I forgot", 2009);
-    first2 = addTemp(first2, last2, "Project Hail Marry", "Cool author", 2015);
-    first2 = addTemp(first2, last2, "Garry Potter", "I forgot", 2012);
+    first2 = addBook(first2, last2, "ASsss", "IVan", 2022);
+    first2 = addBook(first2, last2, "Garry Potter", "I forgot", 2009);
+    first2 = addBook(first2, last2, "Project Hail Marry", "Cool author", 2015);
+    first2 = addBook(first2, last2, "Garry Potter", "I forgot", 2012);
 
 
     cout << "Your list 1: \n";

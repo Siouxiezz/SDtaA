@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
 
@@ -119,6 +118,7 @@ int main()
 
     deleteList(first);
 
-    getch();
+    cin.get();
+    
     return 0;
 }
