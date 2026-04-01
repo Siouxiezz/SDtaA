@@ -5,7 +5,8 @@
 
 using namespace std;
 
-struct Worker {
+struct Worker 
+{
 	string surnameAndInitials;
 	string position;
 	int yearOfAdmission;
