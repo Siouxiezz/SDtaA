@@ -168,10 +168,9 @@ int main()
 
     deQueue(first, last);
 
-    cin.get();
-
     deleteList(first);
-    deleteList(first2);
+
+    cin.get();
 
     return 0;
 }
