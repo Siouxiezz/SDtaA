@@ -135,6 +135,19 @@ void waitforenter(){
     menu();
 }
 
+void deleteTree(Tree* root)
+{
+    if(root == 0) 
+    {
+        return;
+    }
+
+    deleteTree(root -> left);
+    deleteTree(root -> right);
+
+    delete root;
+}
+
 int main()
 {
     srand(time(nullptr));
@@ -191,12 +204,13 @@ int main()
                 cout << "Tree depth: " << treeDepth(root);
                 cout << endl;  waitforenter(); break;
 
-            case 8:	return 0;
+            case 8:	
+                deleteTree(root);
+                return 0;
+                
             default: cout << "Enter correct operation!" << endl;
         }
     }
-	
-
 
     return 0;
 }
