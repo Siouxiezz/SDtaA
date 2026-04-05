@@ -128,7 +128,7 @@ void menu(){
 }
 
 void waitforenter(){
-    cout << "Press Enter to return to menu..." << endl;
+    cout << "Press Enter to return to menu... ";
     cin.ignore();
     cin.get();
     system("cls");
@@ -207,7 +207,7 @@ int main()
             case 8:	
                 deleteTree(root);
                 return 0;
-                
+
             default: cout << "Enter correct operation!" << endl;
         }
     }
