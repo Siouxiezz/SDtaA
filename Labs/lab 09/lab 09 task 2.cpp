@@ -148,6 +148,19 @@ Tree* findNode(Tree* root, int pin)
     }
 }
 
+void freeTree(Tree* root)
+{
+    if (root == nullptr) 
+    {
+        return;
+    }
+
+    freeTree(root -> left);
+    freeTree(root -> right);
+
+    delete root;
+}
+
 void showTree(Tree *root) 
 {
     if (root != 0) 
@@ -182,12 +195,11 @@ int main()
 
     cout << "Average cost: " << averageCost(root) << "\n";
 
-    cout << "======================================\n";
-
     cout << "=== Nodes per level ===\n";
     nodesPerLevel(root);
 
 
+    freeTree(root);
 
     cin.ignore();
     cin.get();
