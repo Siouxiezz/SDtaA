@@ -41,7 +41,7 @@ Tree* buildTreeFromFile()
 {
     ifstream outputFile("D:/AtaP/SDtaA/Labs/lab09/Device_information.txt");
 
-    if (!outputFile.is_open())
+    if(!outputFile.is_open())
     {
         cout << "Error! Failed to open the file\n";
         cin.ignore();
@@ -65,7 +65,7 @@ Tree* buildTreeFromFile()
 
 void calculateSum(Tree* root, double& sum, int& count)
 {
-    if (root == nullptr) 
+    if(root == nullptr) 
     {
         return;
     }
@@ -96,7 +96,7 @@ double averageCost(Tree* root)
 
 void nodesPerLevel(Tree* root)
 {
-    if (root == nullptr)
+    if(root == nullptr)
     {
         cout << "Tree is empty!\n";
         return;
@@ -109,7 +109,7 @@ void nodesPerLevel(Tree* root)
     q[back++] = root;
     int level = 1;
 
-    while (front < back)
+    while(front < back)
     {
         int nodesOnLevel = back - front;
         cout << "Level " << level << ": " << nodesOnLevel << " node(s)\n";
@@ -128,17 +128,17 @@ void nodesPerLevel(Tree* root)
 
 Tree* findNode(Tree* root, int pin)
 {
-    if (root == nullptr)    
+    if(root == nullptr)    
     {
         return nullptr;
     }
 
-    if (pin == root -> pinNumb) 
+    if(pin == root -> pinNumb) 
     {
         return root;
     }
 
-    if (pin < root -> pinNumb)
+    if(pin < root -> pinNumb)
     {
         return findNode(root -> left,  pin);
     }else
@@ -149,7 +149,7 @@ Tree* findNode(Tree* root, int pin)
 
 void freeTree(Tree* root)
 {
-    if (root == nullptr) 
+    if(root == nullptr) 
     {
         return;
     }
@@ -162,7 +162,7 @@ void freeTree(Tree* root)
 
 void showTree(Tree *root) 
 {
-    if (root != 0) 
+    if(root != 0) 
     {
         showTree(root -> left);
         cout << "Pin numb of your device: " << root -> pinNumb << endl;
@@ -179,7 +179,7 @@ int main()
 
     root = buildTreeFromFile();
 
-    if (root == nullptr)
+    if(root == nullptr)
     {
         cout << "Failed to build the tree. Exiting.\n";
         cin.ignore();
