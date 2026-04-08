@@ -6,9 +6,9 @@ using namespace std;
 
 struct Student
 {
-    string Name;
-    int Group;
-    int SES[5];
+    string name;
+    int group;
+    int ses[5];
 };
 
 float average(Student S)
@@ -16,7 +16,7 @@ float average(Student S)
     float sum = 0;
     for(int i = 0;i < 5; i++)
     {
-        sum += S.SES[i];
+        sum += S.ses[i];
     }
 
     return sum / 5.0;
@@ -27,8 +27,8 @@ void display(Student arr[], int n)
 {
     for(int i = 0; i < n; i++)
     {
-        cout << arr[i].Name << " " 
-            << arr[i].Group << " " 
+        cout << arr[i].name << " " 
+            << arr[i].group << " " 
             << average(arr[i]) << endl;
     }
 }
@@ -41,7 +41,7 @@ void displayGoodStudents(Student arr[], int n)
     {
         if(average(arr[i]) > 4.0)
         {
-            cout << arr[i].Name << " " << arr[i].Group << " " << average(arr[i]) << endl;
+            cout << arr[i].name << " " << arr[i].group << " " << average(arr[i]) << endl;
             found = true;
         }
     }
@@ -70,9 +70,9 @@ void displayVowelStudents(Student arr[], int n)
 {
     for(int i = 0; i < n; i++)
     {
-        if(isVowel(arr[i].Name[0]))
+        if(isVowel(arr[i].name[0]))
         {
-            cout << arr[i].Name << " " << arr[i].Group << endl;
+            cout << arr[i].name << " " << arr[i].group << endl;
         }
     }
 }
@@ -100,22 +100,21 @@ int main()
 
     Student arr[100];
 
-    // cin.ignore();
+    cin.ignore();
 
     for(int i = 0; i < n; i++)
     {
         cout << "\tStudent " << i+1;
 
-        cin.ignore();
         cout << "\nEnter name of this student: ";
-        getline(cin, arr[i].Name);
+        getline(cin, arr[i].name);
 
         cout << "Enter group of this student (number): ";
-        cin >> arr[i].Group;
+        cin >> arr[i].group;
 
         cout << "Enter 5 marks: ";
         for(int j = 0; j < 5; j++) {
-            cin >> arr[i].SES[j];
+            cin >> arr[i].ses[j];
         }
 
         cin.ignore();
