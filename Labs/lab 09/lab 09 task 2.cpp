@@ -54,7 +54,7 @@ Tree* buildTreeFromFile()
     int c;
     string n;
 
-    while (outputFile >> pin >> n >> c)
+    while(outputFile >> pin >> n >> c)
     {
         root = createTree(root, pin, n, c);
     }
@@ -114,7 +114,7 @@ void nodesPerLevel(Tree* root)
         int nodesOnLevel = back - front;
         cout << "Level " << level << ": " << nodesOnLevel << " node(s)\n";
 
-        for (int i = 0; i < nodesOnLevel; i++)
+        for(int i = 0; i < nodesOnLevel; i++)
         {
             Tree* node = q[front++];
 
