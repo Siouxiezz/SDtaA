@@ -102,7 +102,6 @@ void nodesPerLevel(Tree* root)
         return;
     }
 
-    // Масив вказівників як черга, 1000 — достатньо для лабораторної
     Tree* q[100];
     int front = 0;
     int back  = 0;
