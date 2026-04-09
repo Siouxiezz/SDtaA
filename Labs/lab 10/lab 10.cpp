@@ -18,8 +18,6 @@ struct ListNode
 
 vector<ListNode*> adjList;
 
-// ======================== GRAPH FUNCTIONS ========================
-
 void initMatrix()
 {
     matrix.assign(n, vector<int>(n, NO_EDGE));
@@ -62,8 +60,6 @@ void buildAdjList()
         }
     }
 }
-
-// ======================== TASKS ========================
 
 void showMatrix()
 {
@@ -125,7 +121,7 @@ void showAdjList()
 
 vector<vector<int>> floydWarshall()
 {
-    const int BIG = 1e9;
+    const int BIG = 10000000;
 
     vector<vector<int>> dist(n, vector<int>(n, BIG));
 
@@ -268,7 +264,6 @@ void maxRouteThreeCities()
              << " --- (" << cityC + 1 << ")" << endl;
 }
 
-// Hamiltonian path check (backtracking)
 vector<int> hamilPath;
 vector<bool> visited;
 
@@ -313,8 +308,6 @@ void checkHamiltonian()
     cout << "Hamiltonian path does not exist." << endl;
 }
 
-// ======================== MENU ========================
-
 void menu()
 {
     cout << "-------------------------------------" << endl;
@@ -349,13 +342,12 @@ int main()
 
     adjList.assign(n, nullptr);
 
-    // Graph from task (from image)
     addEdge(0, 1, 6); // 1 - 2 : 6
     addEdge(0, 2, 2); // 1 - 3 : 2
     addEdge(2, 3, 9); // 3 - 4 : 9
     addEdge(2, 4, 8); // 3 - 5 : 8
     addEdge(3, 4, 4); // 4 - 5 : 4
-    addEdge(3, 5, 4); // 4 - 6 : 4
+    addEdge(3, 5, 4); 
 
     buildAdjList();
 
