@@ -16,7 +16,7 @@ struct Graph
     Graph* next;
 };
 
-vector<Graph*> adjList;
+vector<Graph*> adjacencyList;
 
 void initMatrix()
 {
@@ -34,18 +34,18 @@ void addEdge(int u, int v, int w)
     matrix[v][u] = w;
 }
 
-void buildAdjList()
+void buildAdjacencyList()
 {
     for(int i = 0; i < n; i++)
     {
-        Graph* cur = adjList[i];
+        Graph* cur = adjacencyList[i];
         while(cur != 0)
         {
             Graph* tmp = cur;
-            cur = cur->next;
+            cur = cur -> next;
             delete tmp;
         }
-        adjList[i] = 0;
+        adjacencyList[i] = 0;
     }
 
     for(int i = 0; i < n; i++)
@@ -57,8 +57,8 @@ void buildAdjList()
                 Graph* node = new Graph;
                 node -> vertex = j;
                 node -> weight = matrix[i][j];
-                node -> next = adjList[i];
-                adjList[i] = node;
+                node -> next = adjacencyList[i];
+                adjacencyList[i] = node;
             }
         }
     }
@@ -120,16 +120,21 @@ void showAdjList()
     for(int i = 0; i < n; i++)
     {
         cout << i + 1 << " -> ";
-        Graph* current = adjList[i];
+        Graph* current = adjacencyList[i];
 
         if(current == 0)
         {
             cout << "(no connections)";
         }
+        
         while(current != 0)
         {
             cout << current -> vertex + 1 << "(" << current -> weight << ")";
-            if(current -> next != 0) cout << " -> ";
+
+            if(current -> next != 0) 
+            {
+                cout << " -> ";
+            }
             current = current -> next;
         }
         cout << endl;
@@ -152,6 +157,39 @@ void countEdges()
     }
 
     cout << "Total edges: " << count << endl;
+}
+
+void maxAndMinSquare()
+{
+    int maxSq = -1, minSq = 10000;
+    int maxV = -1, minV = 10000;
+
+    for(int i = 0; i < n; i++)
+    {
+        int square = 0;
+        for(int j = 0; j < n; j++)
+        {
+            if(matrix[i][j] != NO_EDGE && matrix[i][j] != 0)
+            {
+                square++;
+            }
+        }
+
+        if(square > maxSq)
+        {
+            maxSq = square;
+            maxV = i;
+        }
+
+        if(square < minSq)
+        {
+            minSq = square;
+            minV = square;
+        }
+    }
+
+    cout << "Max square of vertex: " << maxV + 1 << " (square) " << maxSq << endl;
+    cout << "Min square of vertex: " << minV + 1 << " (square) " << minSq << endl;
 }
 
 void equalNumberOfConnections()
@@ -229,9 +267,10 @@ void menu()
     cout << "2. Check if graph is complete" << endl;
     cout << "3. Adjacency list" << endl;
     cout << "4. Count edges" << endl;
-    cout << "5. Find verticies with the same connections" << endl;
-    cout << "6. Find longest edge" << endl;
-    cout << "7. Exit" << endl;
+    cout << "5. Find maximum and minimum of each vertex" << endl;
+    cout << "6. Find verticies with the same connections" << endl;
+    cout << "7. Find longest edge" << endl;
+    cout << "8. Exit" << endl;
     cout << "-------------------------------------" << endl;
 }
 
@@ -250,7 +289,7 @@ int main()
 
     initMatrix();
 
-    adjList.assign(n, nullptr);
+    adjacencyList.assign(n, nullptr);
 
     addEdge(2, 0, 3);
     addEdge(2, 1, 6); 
@@ -259,13 +298,13 @@ int main()
     addEdge(3, 1, 1);
     addEdge(2, 5, 8);
 
-    buildAdjList();
+    buildAdjacencyList();
 
     menu();
 
     int command = 0;
 
-    while(command != 7)
+    while(command != 8)
     {
         cout << "Sellect an option: ";
         cin >> command;
@@ -276,9 +315,10 @@ int main()
             case 2: system("cls"); checkComplete(); cout << endl; waitforenter(); break;
             case 3: system("cls"); showAdjList(); cout << endl; waitforenter(); break;
             case 4: system("cls"); countEdges(); cout << endl; waitforenter(); break;
-            case 5: system("cls"); equalNumberOfConnections(); cout << endl; waitforenter(); break;
-            case 6: system("cls"); longestEdge(); cout << endl; waitforenter(); break;
-            case 7: return 0;
+            case 5: system("cls"); maxAndMinSquare(); cout << endl; waitforenter(); break;
+            case 6: system("cls"); equalNumberOfConnections(); cout << endl; waitforenter(); break;
+            case 7: system("cls"); longestEdge(); cout << endl; waitforenter(); break;
+            case 8: return 0;
             default: cout << "Enter correct operation!" << endl;
         }
     }
