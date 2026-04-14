@@ -21,8 +21,11 @@ vector<Graph*> adjList;
 void initMatrix()
 {
     matrix.assign(n, vector<int>(n, NO_EDGE));
+
     for(int i = 0; i < n; i++)
+    {
         matrix[i][i] = 0;
+    }
 }
 
 void addEdge(int u, int v, int w)
@@ -52,9 +55,9 @@ void buildAdjList()
             if(matrix[i][j] != NO_EDGE && matrix[i][j] != 0)
             {
                 Graph* node = new Graph;
-                node->vertex = j;
-                node->weight = matrix[i][j];
-                node->next = adjList[i];
+                node -> vertex = j;
+                node -> weight = matrix[i][j];
+                node -> next = adjList[i];
                 adjList[i] = node;
             }
         }
@@ -64,13 +67,18 @@ void buildAdjList()
 void checkComplete()
 {
     bool complete = true;
+
     for(int i = 0; i < n; i++)
+    {
         for(int j = 0; j < n; j++)
+        {
             if(i != j && matrix[i][j] == NO_EDGE)
             {
                 complete = false;
                 break;
             }
+        }
+    }
 
     if(complete)
         cout << "Graph is complete." << endl;
@@ -81,10 +89,12 @@ void checkComplete()
 
 void showMatrix()
 {
-    cout << "Adjacency matrix:" << endl;
-    cout << "     ";
+    cout << "Adjacency matrix: \n";
+
     for(int i = 0; i < n; i++)
+    {
         cout << i + 1 << "    ";
+    }
     cout << endl;
 
     for(int i = 0; i < n; i++)
@@ -93,9 +103,12 @@ void showMatrix()
         for(int j = 0; j < n; j++)
         {
             if(matrix[i][j] == NO_EDGE)
+            {
                 cout << " -   ";
-            else
+            }else
+            {
                 cout << matrix[i][j] << "    ";
+            }
         }
         cout << "]" << endl;
     }
@@ -107,16 +120,77 @@ void showAdjList()
     for(int i = 0; i < n; i++)
     {
         cout << i + 1 << " -> ";
-        Graph* cur = adjList[i];
-        if(cur == 0)
-            cout << "(no connections)";
-        while(cur != 0)
+        Graph* current = adjList[i];
+
+        if(current == 0)
         {
-            cout << cur->vertex + 1 << "(" << cur->weight << ")";
-            if(cur->next != 0) cout << " -> ";
-            cur = cur->next;
+            cout << "(no connections)";
+        }
+        while(current != 0)
+        {
+            cout << current -> vertex + 1 << "(" << current -> weight << ")";
+            if(current -> next != 0) cout << " -> ";
+            current = current -> next;
         }
         cout << endl;
+    }
+}
+
+void countEdges()
+{
+    int count = 0;
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+        {
+            if(matrix[i][j] != NO_EDGE)
+            {
+                count++;
+            }
+        }
+    }
+
+    cout << "Total edges: " << count << endl;
+}
+
+void equalNumberOfConnections()
+{
+    int connect[n];
+    bool found = false;
+
+    for(int i = 0; i < n; i++)
+    {
+        connect[i] = 0;
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            if(matrix[i][j] != NO_EDGE && matrix[i][j] != 0)
+            {
+                connect[i]++;
+            }
+        }
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i + 1; j < n; j++)
+        {
+            if(connect[i] == connect[j])
+            {
+                cout << "Vertices " << i + 1 << " and " << j + 1
+                     << " have the same connections: " << connect[i] << endl;
+                found = true;
+            }
+        }
+    }
+
+    if(!found)
+    {
+        cout << "There are no verticies with the same connections.\n";
     }
 }
 
@@ -130,7 +204,7 @@ void longestEdge()
         {
             if(matrix[i][j] != NO_EDGE && matrix[i][j] > maxW)
             {
-                matrix[i][j] = maxW;
+                maxW = matrix[i][j];
                 u = i;
                 v = j;
             }
@@ -154,8 +228,10 @@ void menu()
     cout << "1. Adjacency matrix" << endl;  
     cout << "2. Check if graph is complete" << endl;
     cout << "3. Adjacency list" << endl;
-    cout << "4. Find longest edge" << endl;
-    cout << "5. Exit" << endl;
+    cout << "4. Count edges" << endl;
+    cout << "5. Find verticies with the same connections" << endl;
+    cout << "6. Find longest edge" << endl;
+    cout << "7. Exit" << endl;
     cout << "-------------------------------------" << endl;
 }
 
@@ -189,7 +265,7 @@ int main()
 
     int command = 0;
 
-    while(command != 5)
+    while(command != 7)
     {
         cout << "Sellect an option: ";
         cin >> command;
@@ -199,8 +275,10 @@ int main()
             case 1: system("cls"); showMatrix(); cout << endl; waitforenter(); break;
             case 2: system("cls"); checkComplete(); cout << endl; waitforenter(); break;
             case 3: system("cls"); showAdjList(); cout << endl; waitforenter(); break;
-            case 4: system("cls"); longestEdge(); cout << endl; waitforenter(); break;
-            case 5: return 0;
+            case 4: system("cls"); countEdges(); cout << endl; waitforenter(); break;
+            case 5: system("cls"); equalNumberOfConnections(); cout << endl; waitforenter(); break;
+            case 6: system("cls"); longestEdge(); cout << endl; waitforenter(); break;
+            case 7: return 0;
             default: cout << "Enter correct operation!" << endl;
         }
     }
