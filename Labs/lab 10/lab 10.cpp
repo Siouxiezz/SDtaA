@@ -342,11 +342,11 @@ int main()
 
     adjList.assign(n, nullptr);
 
-    addEdge(0, 1, 6); // 1 - 2 : 6
-    addEdge(0, 2, 2); // 1 - 3 : 2
-    addEdge(2, 3, 9); // 3 - 4 : 9
-    addEdge(2, 4, 8); // 3 - 5 : 8
-    addEdge(3, 4, 4); // 4 - 5 : 4
+    addEdge(0, 1, 6); 
+    addEdge(0, 2, 2); 
+    addEdge(2, 3, 9); 
+    addEdge(2, 4, 8); 
+    addEdge(3, 4, 4); 
     addEdge(3, 5, 4); 
 
     buildAdjList();

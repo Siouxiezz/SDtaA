@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <vector>
 
 using namespace std;
@@ -184,12 +183,12 @@ void maxAndMinSquare()
         if(square < minSq)
         {
             minSq = square;
-            minV = square;
+            minV = i;
         }
     }
 
-    cout << "Max square of vertex: " << maxV + 1 << " (square) " << maxSq << endl;
-    cout << "Min square of vertex: " << minV + 1 << " (square) " << minSq << endl;
+    cout << "Max rebra of vertex: " << maxV + 1 << " (rebra) " << maxSq << endl;
+    cout << "Min rebra of vertex: " << minV + 1 << " (rebra) " << minSq << endl;
 }
 
 void equalNumberOfConnections()
