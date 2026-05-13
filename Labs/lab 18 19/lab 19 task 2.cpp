@@ -8,7 +8,7 @@ using namespace std;
 const string alphabet = "abcdefghijklmnopqrstuvwxyz";
 const string key = "phqgiumeaylnofdxjkrcvstzwb";
 
-string subtitutionCipher(string text, string fromAlpha, string toAlpha)
+string subtitutionCode(string text, string fromAlpha, string toAlpha)
 {
     string result = "";
 
@@ -44,11 +44,11 @@ int main()
     int choice, action;
     string text;
 
-    cout << "\t--Substitution cipher--\n\n";
+    cout << "\t Substitution cipher \n";
     cout << "Alphabet: " << alphabet << "\n";
-    cout << "Key: " << key << "\n\n";
+    cout << "Key: " << key << "\n";
 
-    cout << "\n1. Enter text manually\n2. Read from file (input.txt)\nChoice: ";
+    cout << "\n 1. Enter text manually\n" << "2. Read from file (input.txt)\n" <<  "Choice: ";
 
     cin >> choice;
     cin.ignore();
@@ -71,20 +71,19 @@ int main()
         getline(cin, text);
     }
 
-    cout << "Choose the action:\n1.Encrypt\n2.Descrypt\nChoice: ";
-
+    cout << "Choose the action: \n" << "1.Encrypt\n" << "2.Descrypt\n" << "Choice: ";
     cin >> action;
 
     if (action == 1)
     {
         cout << "Encrypted text: "
-             << subtitutionCipher(text, alphabet, key)
+             << subtitutionCode(text, alphabet, key)
              << "\n";
     }
     else if (action == 2)
     {
         cout << "Decrypted text: "
-             << subtitutionCipher(text, key, alphabet)
+             << subtitutionCode(text, key, alphabet)
              << "\n";
     }
 

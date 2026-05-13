@@ -46,7 +46,7 @@ wstring caesarCipher(wstring text, int key)
     return result;
 }
 
-int frequencyAttack(wstring cipherText)
+int frequencyLetter(wstring cipherText)
 {
     int n = alphabet.length();
     vector<int> counts(n, 0);
@@ -85,8 +85,8 @@ int main()
     int choice, action;
     wstring text;
 
-    cout << "\tCiphertext: \t" << endl;
-    cout << "1.Enter text\n2.Read from file.\nChoice:" << endl;
+    cout << "\tCiphertext: \n";
+    cout << "1.Enter text\n" << "2.Read from file.\n" << "Choice: " << endl;
 
     cin >> choice;
     cin.ignore();
@@ -110,7 +110,7 @@ int main()
         getline(wcin, text);
     }
 
-    cout << "Do:\n 1.Cipher text\n 2.Decipher text\n";
+    cout << "Do:\n" <<  "1.Cipher text\n" << "2.Decipher text\n";
     cin >> action;
 
     if (action == 1 || action == 2)

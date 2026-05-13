@@ -8,11 +8,11 @@ using namespace std;
 
 const string alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-void printVenegereTable()
+void printVenTable()
 {
     int n = alphabet.length();
 
-    cout << "\t --Venegere table--" << endl;
+    cout << "\t Venegere table \n";
 
     for (char c : alphabet)
     {
@@ -32,11 +32,9 @@ void printVenegereTable()
 
         cout << endl;
     }
-
-    cout << "==============================" << endl;
 }
 
-string vinegereCipher(string text, string key, bool isEncrypt)
+string vinegereCode(string text, string key, bool isEncrypt)
 {
     string result = "";
 
@@ -106,18 +104,18 @@ int main()
         return 1;
     }
 
-    cout << "Choose action: 1.Encrypt 2.Decrypt\n Choice:";
+    cout << "Choose action: \n" << "1.Encrypt \n" << "2.Decrypt\n" <<  "Choice: ";
     cin >> action;
 
     if (action == 1)
     {
-        string encrypted = vinegereCipher(text, key, true);
+        string encrypted = vinegereCode(text, key, true);
 
         cout << "\nEncrypted text: " << encrypted << endl;
     }
     else if (action == 2)
     {
-        string decrypted = vinegereCipher(text, key, false);
+        string decrypted = vinegereCode(text, key, false);
 
         cout << "\nDecrypted text: " << decrypted << endl;
     }
@@ -134,7 +132,7 @@ int main()
 
     if (showTable == 'y')
     {
-        printVenegereTable();
+        printVenTable();
     }
 
     return 0;
