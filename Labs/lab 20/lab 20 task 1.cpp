@@ -8,16 +8,16 @@ using namespace std;
 struct Backpack
 {
     string name;
-    double volume; //д^3
+    double volume; //дм
     double calories; //ккалорії
-    double ratio; //об'єм
+    double ratio; //калорії/об'єм
 };
 
 void printProducts( vector<Backpack>& Backpacks)
 {
     cout << "Backpacks: \n";
     cout << "------------------------------\n";
-    cout << "Name | Ratio | Energy | Efficensy\n";
+    cout << "Name | Volume | Energy | Efficensy\n";
 
     for(const auto& p : Backpacks)
     {
@@ -28,9 +28,7 @@ void printProducts( vector<Backpack>& Backpacks)
     }
 }
 
-void solveKnapsack(vector<Backpack> Backpacks,
-                   double maxVolume,
-                   double maxWeight)
+void solveKnapsack(vector<Backpack> Backpacks, double maxVolume, double maxWeight)
 {
     sort(Backpacks.begin(), Backpacks.end(),
          [](const Backpack& a, const Backpack& b)
@@ -57,12 +55,9 @@ void solveKnapsack(vector<Backpack> Backpacks,
     usedVolume = volSugar + volMilk + volFlour + volMeat;
     usedWeight = sugar + milk + flour + meat;
  
-    totalCalories = sugar  * 4000
-                  + milk   * 5000
-                  + flour  * 5000
-                  + meat   * 1500;
+    totalCalories = sugar  * 4000 + milk   * 5000 + flour  * 5000 + meat   * 1500;
  
-    cout << "\nResult of hungry algorythm: \n";
+    cout << "----------------------------------\n";
 
     cout << "\nBackpack | Quantity (kg) | Volume (dm) | Calories\n";
 
@@ -71,8 +66,7 @@ void solveKnapsack(vector<Backpack> Backpacks,
     cout << "Milk " << milk  << " | " << volMilk  << " | " << milk  * 5000 << "\n";
     cout << "Sugar " << sugar << " | " << volSugar << " | " << sugar * 4000 << "\n";
     cout << "-----------------------------------------------\n";
-    cout << "Overal: " << usedWeight << " kg "
-         << usedVolume << " dm " << totalCalories << " kkcal\n";
+    cout << "Overal: " << usedWeight << " kg " << usedVolume << " dm " << totalCalories << " kkcal\n";
  
 }
 

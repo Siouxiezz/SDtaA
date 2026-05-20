@@ -75,7 +75,6 @@ int main()
  
     vector<Activity> result = selectActivities(activities);
  
-    cout << "\nSelected activities (do not intersect):\n";
     cout << "Index | Start | End\n";
     cout << "------------------------------\n";
  
